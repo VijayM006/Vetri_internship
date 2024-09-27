@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    <h1>Inventory Details</h1>
+
+    {% if inventory %}
+        <div class="container page-wrapper">
+            {% for item in inventory %}
+            <div class="page-inner">
+                <div class="row">
+                    <div class="el-wrapper">
+                        <div class="box-up">
+                            <img src="{{ url_for('static', filename='images/' ~ item['img']) }}" alt="{{ item['filename'] }}" style="width: 200px; height: auto;">
+                            <div class="img-info">
+                                <div class="info-inner">
+                                    <span class="p-name"><strong>Name:</strong> {{ item['filename'] }}</span>
+                                    <span class="p-company"><strong>Quantity:</strong> {{ item['quantity'] }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-down">
+                            <div class="h-bg">
+                                <div class="h-bg-inner"></div>
+                            </div>
+                            <a class="cart" href="{{ url_for('edit_details', id=item['image_id']) }}">
+                                <span class="price">${{ item['price'] }}</span>
+                                <span class="add-to-cart">
+                                    <span class="txt">Edit</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No inventory items found.</p>
+    {% endif %}
+    
+</body>
+</html>

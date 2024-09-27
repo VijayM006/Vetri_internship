@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory</title>
+</head>
+<body>
+    <h2>Inventory</h2>
+    <table border="all" style="border-collapse: collapse; width: 100%; background-color:transparent;">
+        <tr>
+            <th>No</th>
+            <th>Stock Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total Value</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        {% for index, i in enumerate(data, start=1) %}
+        <tr>
+            <td>{{ index }}</td>
+            <td>{{ i[1] }}</td>
+            <td>{{ i[2] }}</td>
+            <td>{{ i[3] }}</td>
+            <td>{{ i[4] }}</td>
+            <td><a href="{{ url_for('edit', No=i[0]) }}">Edit</a></td>
+            <td><a href="{{ url_for('delete', No=i[0]) }}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{{url_for('add_stock')}}">
+        <button>Add </button>
+    </a>
+</body>
+</html>

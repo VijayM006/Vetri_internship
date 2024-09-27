@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <a href="{{url_for('submit_details')}}">Already added Please click to view Inventory</a>
+<div class="container page-wrapper">
+    {% for image in images %}
+    <div class="page-inner">
+      <div class="row">
+        <div class="el-wrapper">
+          <div class="box-up">
+            <img src="{{ url_for('static', filename='images/' ~ image[1]) }}" alt="{{ image[2] }}" style="width: 100px; height: 100px;">
+            <div class="img-info">
+              <div class="info-inner">
+                <span class="p-name">{{ image[2] }}</span>
+              </div>
+            </div>
+          </div>
+  
+          <div class="box-down">
+            <div class="h-bg">
+              <div class="h-bg-inner"></div>
+            </div>
+  
+            <!-- Pass the image id to the add_details route -->
+            <a class="cart" href="{{ url_for('add_details', id=image[0]) }}">
+              <span class="add-to-cart">
+                <span class="txt">Add quantity</span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</body>
+</html>

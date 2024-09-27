@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+</head>
+<body>
+    <form method="POST">
+        Stock Name: <input type="text" name="stock" value="{{ data[1] }}" required>
+        Quantity: <input type="number" name="quantity" value="{{ data[2] }}" required>
+        Price: <input type="number" step="0.01" name="price" value="{{ data[3] }}" required>  <!-- New field for price -->
+        <input type="submit" value="Update Stock">
+    </form>
+    
+</body>
+</html>
